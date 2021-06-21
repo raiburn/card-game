@@ -88,8 +88,15 @@ const createDeck =  async (selector, flipped) => {
     cards.forEach((card, index) => container.append(createCard(card, (index < flipped))));
 }
 
+const createHand =  async (selector, flipped) => {
+    const container = document.querySelector(selector);
+    const cards = await fetch(`http://localhost:8000/deck/2`)
+    .then(response => response.json());
+    cards.forEach((card, index) => container.append(createCard(card, (index < flipped))));
+}
+
 const onClickElementById = (id, callback) => {
-    document.getElementById(id).addEventListener('click', callback);
+        document.getElementById(id)?.addEventListener('click', callback);
 }
 
 window.addEventListener('load', function() {
@@ -97,7 +104,7 @@ window.addEventListener('load', function() {
         
         await createDeck('.deck.table', 2)
         const cardSize = 2;
-        await createDeck('.deck.hand',`/deck/${cardSize}`, cardSize)
+        await createHand('.deck.hand', cardSize);
         onClickElementById('flip-cards', () => {
             document.querySelectorAll('.deck.hand .card').forEach((element, index) => {
                 setTimeout(() => {
@@ -113,3 +120,7 @@ window.addEventListener('load', function() {
         });
     })();
 });
+
+const flip = () => {
+
+}

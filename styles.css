@@ -268,7 +268,7 @@ body {
     width: calc(100% - 15px - 15px);
     height: calc(100% - 10px - 10px);
     margin: 10px 15px;
-    background-image: url('/images/cards_design.png');
+    background-image: url('./images/cards_design.png');
     background-position: -13px 0px;
     background-size: 282px 585px;
     background-repeat: no-repeat;

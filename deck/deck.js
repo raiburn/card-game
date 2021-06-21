@@ -1,9 +1,9 @@
 class Deck {
     numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
     suits = ['♣', '♦', '♥', '♠'];
-  
+
     cards = [];
-  
+
     constructor() {
       this.suits.forEach(suit => {
         this.numbers.forEach(face => {
@@ -11,7 +11,7 @@ class Deck {
         });
       });
     }
-  
+
     refillDeck() {
       this.suits.forEach(suit => {
         this.numbers.forEach(face => {
@@ -26,12 +26,12 @@ class Deck {
             let leftCards = [];
             leftCards = leftCards.concat(this.cards);
             let times = leftCards.length;
-        
+
             this.refillDeck();
             for (let i = 0; i < times; i++) {
                 this.cards = this.cards.filter(card => card !== leftCards[i]);
             }
-        
+
             let deal = new Array(parseInt(size - times))
                 .fill()
                 .map(
@@ -40,7 +40,7 @@ class Deck {
                 );
             return deal.concat(leftCards);
             } else {
-            return new Array(size)
+            return new Array(parseInt(size))
                 .fill()
                 .map(
                 () =>
@@ -58,13 +58,13 @@ class Deck {
         constructor(deck, size) {
           this.cards = deck.dispatchCards(size);
         }
-      
+
         bringbackCards(deck) {
           deck.cards = deck.cards.concat(this.cards);
           this.cards = [];
         }
       }
-      
+
       module.exports = {
         Deck,
         Hand
